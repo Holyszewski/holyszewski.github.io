@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wolf's projects</title>
+<meta name="description" content="Projects by Matěj &quot;Wolf&quot; Holyszewski: Wolf80, an emulator of Czechoslovak single-board computers, the microHAMCLOCK ham radio clock and Wolf's SFMT emulator.">
+<meta property="og:title" content="Wolf's projects">
+<meta property="og:description" content="Emulators of old computers and a ham radio clock, by Matěj &quot;Wolf&quot; Holyszewski.">
+<meta property="og:image" content="https://holyszewski.github.io/img/wolf80.png">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0c22e'/%3E%3Cpath d='M5 8h4l2.5 11L14 8h4l2.5 11L23 8h4l-4.5 16h-4L16 13.5 13.5 24h-4z' fill='%23181a1f'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #15171c;
+    --card: #1f2229;
+    --line: #2f343e;
+    --shot: #0d0e11;
+    --text: #e6e8ec;
+    --muted: #a3a9b5;
+    --accent: #f0c22e;
+    --btn: #2b6fd6;
+    --btn-text: #fff;
+    --btn2: #2a2e37;
+    --soon: #3a3f4a;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f3f4f6;
+      --card: #fff;
+      --line: #dde0e5;
+      --shot: #15171c;
+      --text: #1b1d22;
+      --muted: #5b6270;
+      --accent: #b8860b;
+      --btn: #1f5fc4;
+      --btn2: #e8eaee;
+      --soon: #e3e5e9;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 20px 0; display: flex; justify-content: flex-end; }
+  .hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .lang { display: flex; gap: 6px; }
+  .lang button {
+    font: inherit; font-size: 14px; padding: 5px 12px; border-radius: 6px; cursor: pointer;
+    background: var(--btn2); color: var(--text); border: 1px solid var(--line);
+  }
+  .lang button[aria-pressed="true"] { background: var(--btn); color: var(--btn-text); border-color: var(--btn); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px; padding-bottom: 40px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .shot { display: block; aspect-ratio: 16 / 9; background: var(--shot); position: relative; overflow: hidden; }
+  .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+  .shot.pad img { padding: 7% 12%; }
+  .badge {
+    position: absolute; top: 12px; left: 12px; font-size: 13px; font-weight: 600;
+    padding: 3px 10px; border-radius: 999px; background: var(--accent); color: #181a1f;
+  }
+  .body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+  h2 { margin: 0; font-size: 22px; }
+  .tags { margin: 4px 0 10px; font-size: 13px; color: var(--muted); }
+  .body p { margin: 0 0 18px; flex: 1; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .links a, .links span {
+    font-size: 15px; font-weight: 600; text-decoration: none; padding: 8px 14px; border-radius: 8px;
+    background: var(--btn2); color: var(--text); border: 1px solid var(--line);
+  }
+  .links a.main { background: var(--btn); color: var(--btn-text); border-color: var(--btn); }
+  .links a:hover { filter: brightness(1.12); }
+  .links span { background: var(--soon); color: var(--muted); }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 32px; color: var(--muted); font-size: 14px; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 class="hidden">Wolf's projects</h1>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en">English</button>
+      <button type="button" data-lang="cs">Čeština</button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <article class="card">
+      <a class="shot" href="https://holyszewski.github.io/Wolf80/">
+        <img src="img/wolf80.png" width="1600" height="900" alt="Wolf80 with the PMI-80: the cheat sheet on the left, the yellow case with the display and keyboard in the middle, the controls and the list of games on the right" data-i18n-alt="wolf80.alt">
+      </a>
+      <div class="body">
+        <h2>Wolf80</h2>
+        <div class="tags">8080 · Z80 · JavaScript · Windows EXE</div>
+        <p data-i18n="wolf80.text">An emulator of the Czechoslovak single-board computers PMI-80, Savia-84 and Stone 1. Their original monitors run on the emulator's own 8080 and Z80 cores, with the display, keyboard and sound modelled as on the real boards. In the browser, offline or as a Windows EXE.</p>
+        <div class="links">
+          <a class="main" href="https://holyszewski.github.io/Wolf80/" data-i18n="open">Open in the browser</a>
+          <a href="https://github.com/Holyszewski/Wolf80">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <a class="shot pad" href="https://holyszewski.github.io/microHAMCLOCK/">
+        <img src="img/microhamclock.png" width="540" height="284" alt="The microHAMCLOCK display cycling through its screens: clock, propagation, list and map of the stations that hear you" data-i18n-alt="mhc.alt">
+      </a>
+      <div class="body">
+        <h2>microHAMCLOCK</h2>
+        <div class="tags">ESP32-S3 · Heltec WiFi LoRa 32 V3 · C++</div>
+        <p data-i18n="mhc.text">A pocket-sized ham radio clock on the tiny OLED of the Heltec WiFi LoRa 32 V3: UTC, solar and propagation data, the nearest ionosonde and live PSKReporter spots of the stations that hear you, on a list and a map. Installed and set up straight from the browser.</p>
+        <div class="links">
+          <a class="main" href="https://holyszewski.github.io/microHAMCLOCK/" data-i18n="install">Install from the browser</a>
+          <a href="https://github.com/Holyszewski/microHAMCLOCK">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot">
+        <img src="img/sfmt.png" width="1366" height="657" alt="Wolf&#39;s SFMT: the trainer with its binary LEDs, the hexadecimal display, the list of codes and the keypad, the controls and the built-in games on the right" data-i18n-alt="sfmt.alt">
+        <span class="badge" data-i18n="soon">Coming soon</span>
+      </div>
+      <div class="body">
+        <h2>Wolf's SFMT</h2>
+        <div class="tags">TMS1100 · JavaScript · Windows EXE</div>
+        <p data-i18n="sfmt.text">An emulator of the Science Fair Microcomputer Trainer (Radio Shack 28-260, 1985), the American version of the Gakken FX-Micom R-165. Its own TI TMS1100 core runs the trainer's original program with the monitor and the seven built-in games.</p>
+        <div class="links">
+          <span data-i18n="soonLong">Coming soon</span>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <span data-i18n="footer">All projects are on</span> <a href="https://github.com/Holyszewski">GitHub</a>.
+  </footer>
+</div>
+
+<script>
+(function () {
+  var cs = {
+    'wolf80.alt': 'Wolf80 s PMI-80: vlevo tahák, uprostřed žlutý kufřík s displejem a klávesnicí, vpravo ovládání a seznam her',
+    'wolf80.text': 'Emulátor československých jednodeskových počítačů PMI-80, Savia-84 a Stone 1. Jejich původní monitory běží na vlastních jádrech 8080 a Z80 emulátoru a displej, klávesnice i zvuk fungují jako na skutečných deskách. V prohlížeči, offline nebo jako EXE pro Windows.',
+    open: 'Otevřít v prohlížeči',
+    'mhc.alt': 'Displej microHAMCLOCK střídá obrazovky: hodiny, šíření vln, seznam a mapu stanic, které vás slyší',
+    'mhc.text': 'Kapesní radioamatérské hodiny na malém OLED displeji desky Heltec WiFi LoRa 32 V3: UTC, sluneční a propagační data, nejbližší ionosonda a živé spoty z PSKReporteru se stanicemi, které vás slyší, v seznamu i na mapě. Instalace i nastavení přímo z prohlížeče.',
+    install: 'Nainstalovat z prohlížeče',
+    'sfmt.alt': 'Wolf\'s SFMT: trainer s binárními LED, šestnáctkovým displejem, tabulkou kódů a klávesnicí, vpravo ovládání a vestavěné hry',
+    'sfmt.text': 'Emulátor Science Fair Microcomputer Traineru (Radio Shack 28-260, 1985), americké verze Gakken FX-Micom R-165. Vlastní jádro čipu TI TMS1100 vykonává původní program traineru s monitorem a sedmi vestavěnými hrami.',
+    soon: 'Připravuje se',
+    soonLong: 'Brzy zde',
+    footer: 'Všechny projekty jsou na'
+  };
+  var en = {}, enAlt = {};
+  document.querySelectorAll('[data-i18n]').forEach(function (el) { en[el.dataset.i18n] = el.textContent; });
+  document.querySelectorAll('[data-i18n-alt]').forEach(function (el) { enAlt[el.dataset.i18nAlt] = el.alt; });
+
+  function apply(lang) {
+    var t = lang === 'cs' ? cs : en;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = t[el.dataset.i18n]; });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+      el.alt = lang === 'cs' ? cs[el.dataset.i18nAlt] : enAlt[el.dataset.i18nAlt];
+    });
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem('holyszewski-lang'); } catch (e) {}
+  var nav = (navigator.languages || [navigator.language || '']).join(',').toLowerCase();
+  apply(saved || (/(^|,)(cs|sk)/.test(nav) ? 'cs' : 'en'));
+
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      apply(b.dataset.lang);
+      try { localStorage.setItem('holyszewski-lang', b.dataset.lang); } catch (e) {}
+    });
+  });
+})();
+</script>
+</body>
+</html>
