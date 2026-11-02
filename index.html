@@ -9,34 +9,36 @@
 <meta property="og:description" content="Emulators of old computers and a ham radio clock, by Matěj &quot;Wolf&quot; Holyszewski.">
 <meta property="og:image" content="https://holyszewski.github.io/img/wolf80.png">
 <meta name="google-site-verification" content="-drdRi00__iKWBQYMbq5z87M2jbVweDyWLGPqEQDjVI">
-<meta name="color-scheme" content="dark light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0c22e'/%3E%3Cpath d='M5 8h4l2.5 11L14 8h4l2.5 11L23 8h4l-4.5 16h-4L16 13.5 13.5 24h-4z' fill='%23181a1f'/%3E%3C/svg%3E">
 <style>
+  /* Light by default; dark only on desktops (a fine pointer that can hover) set to dark.
+     Phones and tablets always get the light page. */
   :root {
-    --bg: #15171c;
-    --card: #1f2229;
-    --line: #2f343e;
-    --shot: #0d0e11;
-    --text: #e6e8ec;
-    --muted: #a3a9b5;
+    color-scheme: light;
+    --bg: #f3f4f6;
+    --card: #fff;
+    --line: #dde0e5;
+    --shot: #15171c;
+    --text: #1b1d22;
+    --muted: #5b6270;
     --accent: #f0c22e;
-    --btn: #2b6fd6;
+    --btn: #1f5fc4;
     --btn-text: #fff;
-    --btn2: #2a2e37;
-    --soon: #3a3f4a;
+    --btn2: #e8eaee;
+    --soon: #e3e5e9;
   }
-  @media (prefers-color-scheme: light) {
+  @media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
     :root {
-      --bg: #f3f4f6;
-      --card: #fff;
-      --line: #dde0e5;
-      --shot: #15171c;
-      --text: #1b1d22;
-      --muted: #5b6270;
-      --accent: #b8860b;
-      --btn: #1f5fc4;
-      --btn2: #e8eaee;
-      --soon: #e3e5e9;
+      color-scheme: dark;
+      --bg: #15171c;
+      --card: #1f2229;
+      --line: #2f343e;
+      --shot: #0d0e11;
+      --text: #e6e8ec;
+      --muted: #a3a9b5;
+      --btn: #2b6fd6;
+      --btn2: #2a2e37;
+      --soon: #3a3f4a;
     }
   }
   * { box-sizing: border-box; }
@@ -47,8 +49,8 @@
     font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
-  header { padding: 20px 0; display: flex; justify-content: flex-end; }
-  .hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  header { padding: 32px 0 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+  h1 { margin: 0; font-size: clamp(26px, 5vw, 34px); line-height: 1.2; }
   .lang { display: flex; gap: 6px; }
   .lang button {
     font: inherit; font-size: 14px; padding: 5px 12px; border-radius: 6px; cursor: pointer;
@@ -83,7 +85,7 @@
 <body>
 <div class="wrap">
   <header>
-    <h1 class="hidden">Wolf's projects</h1>
+    <h1 data-i18n="title">My projects</h1>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-lang="en">English</button>
       <button type="button" data-lang="cs">Čeština</button>
@@ -145,6 +147,7 @@
 <script>
 (function () {
   var cs = {
+    title: 'Rozcestník mých projektů',
     'wolf80.alt': 'Wolf80 s PMI-80: vlevo tahák, uprostřed žlutý kufřík s displejem a klávesnicí, vpravo ovládání a seznam her',
     'wolf80.text': 'Emulátor československých jednodeskových počítačů PMI-80, Savia-84 a Stone 1. Jejich původní monitory běží na vlastních jádrech 8080 a Z80 emulátoru a displej, klávesnice i zvuk fungují jako na skutečných deskách. V prohlížeči, offline nebo jako EXE pro Windows.',
     open: 'Otevřít v prohlížeči',
